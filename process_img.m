@@ -1,13 +1,30 @@
+%{
+DIRECTORY:	https://github.com/howwallace/reczekj-et-al-2020.git
+PROGRAM:	process_img.m
+AUTHOR:		Harper O. W. Wallace
+DATE:		17 Jan 2020
+
+DESCRIPTION:
+This script calculates the average intensity over each aligned region (specified by x_coords
+and y_coords, with width and height REGION_DIM, in units of pixels) and the average intensity
+of each corresponding isotropic border (squarely spaced ISO_GAP pixels from the region and
+with ISO_WIDTH pixels thickness, such that the area of the isotropic border is (REGION_DIM
++ 2*ISO_GAP + 2*ISO_WIDTH)^2 - (REGION_DIM + 2*ISO_GAP)^2) for each LPL image. Average
+intensities of aligned regions are normalized against isotropic border intensities.
+}%
+
 
 clear();
 
-PATH = "/Users/harperwallace/Dropbox/Image Analysis/Grid Set 2_4/doubleisoBG100pow190000ums_doublePatt12Pow4500ums_4x_";
-SUFFIX = "deg_color.jpg";
+% path and suffix to image files
+PATH = Ò/etc./...Ó;
+SUFFIX = ".jpg";
  
 x_coords = [427, 512, 600, 688, 773, 856, 424, 512, 600, 685, 771, 856, 424, 512, 600, 685, 773, 859, 424, 512, 600, 683, 768, 856, 424, 512, 600, 683, 773, 859, 424, 509, 597, 685, 768, 856];
 y_coords = [155, 155, 155, 155, 155, 157, 240, 243, 243, 243, 243, 243, 325, 325, 328, 328, 328, 328, 411, 413, 413, 413, 413, 416, 501, 499, 499, 501, 499, 501, 584, 587, 587, 587, 587, 589];
 
 REGION_DIM = 34;
+%REGION_DIM = 26;	% used for a series images taken at lower magnification
 
 
 ISO_GAP = 8;
@@ -16,18 +33,18 @@ ISO_WIDTH = 8;
 DISP_ROI = true;
 USE_CELLS = false;
 NUM_REGIONS = length(x_coords);
-%REGION_DIM = 26;
 INSET = 0;
 
 USE_MAX_POOL = false;
 SUB_REGION_DIM = 2;
 
+% used to iterate through image files, in format PATH + [val] + SUFFIX
 IMAGE_CASES = [0:5:175]; %[0, 30, 45, 90]; %[0, 45, 90, 135]; %
 
 %%%  INSERT REGIONS ABOVE  %%%
 
 
-NUM_CASES = length(IMAGE_CASES); %36;     % number of angles
+NUM_CASES = length(IMAGE_CASES);	% number of LPL angles
 %d = 180/NUM_CASES;  % degree measure between angles
 
 RGBs{NUM_CASES} = [];
@@ -36,7 +53,7 @@ isos = [];
 for r = 1:NUM_CASES
     img = imread(convertStringsToChars(PATH + int2str(IMAGE_CASES(r)) + SUFFIX));
     RGBs{r} = img;
-    Igrays{r} = double(1/2*img(:, :, 1) + 1/2*img(:, :, 2)); %rgb2gray(img)); % 
+    Igrays{r} = rgb2gray(img));		% double(1/2*img(:, :, 1) + 1/2*img(:, :, 2));
 end
 
 
@@ -130,7 +147,7 @@ for c = 1:NUM_CASES
             end
         end
         iso_means(c, region) = mean2(Igrays{c}(isoBWs{region}));
-        adj_ali_means(c, region, :, :) = ali_means(c, region, :, :) - iso_means(c, region);   % + iso_ave; CHANGED: later
+        adj_ali_means(c, region, :, :) = ali_means(c, region, :, :) - iso_means(c, region);
     end
 end
 

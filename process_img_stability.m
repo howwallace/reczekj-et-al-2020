@@ -1,8 +1,20 @@
+%{
+DIRECTORY:	https://github.com/howwallace/reczekj-et-al-2020.git
+PROGRAM:	process_img_stability.m
+AUTHOR:		Harper O. W. Wallace
+DATE:		17 Jan 2020
+
+DESCRIPTION:
+This script calculates average intensities (in isolated red, green, and blue color channels)
+over regions of interest in image stability analysis. Contrast ratios calculated according to
+https://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef.
+}%
+
 
 clear();
 
 %%%  INSERT REGIONS BELOW  %%%
-PATH = "/Users/harperwallace/Desktop/Image Analysis/Stability/B_day_2_";
+PATH = Ò/etc./...Ó;
 SUFFIX = ".jpg";
 
 COORDS = [];

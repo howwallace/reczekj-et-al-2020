@@ -1,3 +1,20 @@
+%{
+DIRECTORY:	https://github.com/howwallace/reczekj-et-al-2020.git
+PROGRAM:	disp_results.m
+AUTHOR:		Harper O. W. Wallace
+DATE:		17 Jan 2020
+
+DESCRIPTION:
+This script formats output values (either from process_img.m or from remove_defects.m; cf. 
+those files for further details and important notes) for ease of copy-and-paste to Microsoft
+Excel for figure-creation and further analysis.
+
+IMPORTANT NOTE:
+disp_results.m references adj_ali_means or defects_removed, output values from process_img.m
+and defects_removed.m, respectively, as the DATASET to be displayed. To ensure proper
+functionality, be sure to run this script after running process_img.m or defects_removed.m,
+and in the same MATLAB environment.
+}%
 
 
 DATASET = adj_ali_means; %defects_removed;

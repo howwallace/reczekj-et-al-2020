@@ -1,7 +1,19 @@
+%{
+DIRECTORY:	https://github.com/howwallace/reczekj-et-al-2020.git
+PROGRAM:	convert_img.m
+AUTHOR:		Harper O. W. Wallace
+DATE:		17 Jan 2020
 
-PATH = "/Users/harperwallace/Desktop/Image Analysis/8bit_mario.png";
-FOURIER = false;
-%N = 10;
+DESCRIPTION:
+This script converts a pixelated input image (with “pixel” dimension D) to a matrix of
+average grayscale intensities (scale 0 to 1), stored in an output variable aves. It is
+intended to be used in conjunction with convert_data.m, which takes the output variable aves
+and converts it to a matrix of alignment angles relative to 0-degrees LPL to achieve
+transmittance values corresponding to aves.
+}%
+
+
+PATH = “/etc./.../img.jpg”;
 
 original = imread(convertStringsToChars(PATH));
 gray = rgb2gray(original);
@@ -40,17 +52,6 @@ end
 
 imshow(aves)
 
-%{
-if FOURIER
-    fourier = fft2(aves);
-    imagesc(abs(fftshift(fourier)));
-    %imshow(fourier);
-    
-    for x = 1:W
-        fprintf('%s\n', num2str(abs(fourier(x, :)), '%d\t'));
-    end
-end
-%}
 
 for x = 1:W
     for y = 1:H
