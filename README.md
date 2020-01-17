@@ -1,7 +1,7 @@
-DIRECTORY:	https://github.com/howwallace/reczekj-et-al-2020.git
-FILE:	    README.md
-AUTHOR:		Harper O. W. Wallace
-DATE:		17 Jan 2020
+#DIRECTORY:	https://github.com/howwallace/reczekj-et-al-2020.git
+######FILE:	    README.md
+######AUTHOR:		Harper O. W. Wallace
+######DATE:		17 Jan 2020
 
 This repository contains MATLAB scripts used for image analysis in:
 
