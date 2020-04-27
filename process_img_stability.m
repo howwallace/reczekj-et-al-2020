@@ -8,7 +8,7 @@ DESCRIPTION:
 This script calculates average intensities (in isolated red, green, and blue color channels)
 over regions of interest in image stability analysis. Contrast ratios calculated according to
 https://www.w3.org/TR/2008/REC-WCAG20-20081211/#contrast-ratiodef.
-}%
+%}
 
 
 clear();
