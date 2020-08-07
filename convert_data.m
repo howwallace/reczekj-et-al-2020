@@ -13,7 +13,7 @@ NOTE:
 convert_data.m can be used with convert_img.m (cf. header for convert_img.m for further
 details). To ensure proper functionality, be sure to run this script after running
 convert_img.m, and in the same MATLAB environment.
-}%
+%}
 
 
 N = 8;  % BASE
