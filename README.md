@@ -1,3 +1,4 @@
+# reczekj-et-al-2020
 This repository contains annotated MATLAB scripts used for image analysis in:
 
 Title:  "Direct-write orientation of charge-transfer liquid crystals enables polarization-based coding and encryption"  
